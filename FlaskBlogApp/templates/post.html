@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Clean Blog - Start Bootstrap Theme{% endblock %}
+{% block image %}{{ url_for( 'static', filename='post-bg.jpg')}}{% endblock %}
+{% block header %}
+          <div class="post-heading">
+             <h1>{{ post.title }}</h1>
+            <h2 class="subheading">{{ post.subtitle }}</h2>
+            <span class="meta">Posted by {{ post.author }} on {{ post.date_posted.strftime("%B %d, %Y") }}</span>
+          </div>
+{% endblock %}
+{% block head %}
+    <script>
+    function subConfirm() {  
+      res = confirm("Are you sure you want to delete the post ?");
+      if (res == true) {
+        window.location.href = "{{ url_for('posts.deletepost', post_id=post.pk) }}";
+      }
+    }
+    </script>
+{% endblock %}
+{% block content %}
+    {% if current_user.is_authenticated and current_user.username == post.author %}
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto"> 
+        <a href="{{ url_for('posts.editpost', post_id=post.pk) }}" class="btn btn-primary">Edit</a>
+        <input type="button" class="btn btn-primary" onclick="subConfirm()" value="Delete" />
+      </div>
+    </div>
+    <br>
+    <br>
+    {% endif %}
+    <article>
+      <div class="container"  >
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            {{ post.content | markdown }}
+          </div>
+        </div>
+      </div>
+    </article>
+{% endblock %}

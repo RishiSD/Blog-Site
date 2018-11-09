@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V6</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='material-design-iconic-font.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='animate.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='select2.min.css') }}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='main.css') }}">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form name="LoginForm" id="LoginForm" class="login100-form validate-form"  method="POST" >
+					<span class="login100-form-title p-b-70">
+						Welcome
+					</span>
+					<div align="center">
+						{% if error %}
+							<p2 style="color:red;"> {{ error }} </p2>
+						{% endif %}
+					</div>	
+					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+						{{ form.username.label }} {{ form.username(class="input100") }}
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+						{{ form.password.label }} {{ form.password(class="input100", type="password") }}
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+					<br>							
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='popper.js') }}"></script>
+	<script src="{{ url_for( 'static', filename='bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='moment.min.js') }}"></script>
+	<script src="{{ url_for( 'static', filename='daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for( 'static', filename='main.js') }}"></script>
+
+</body>
+</html>

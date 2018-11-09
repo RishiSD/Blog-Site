@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Clean Blog - Start Bootstrap Theme{% endblock %}
+{% block image %}{{ url_for( 'static', filename='post-bg.jpg')}}{% endblock %}
+{% block header %}
+            <div class="page-heading">
+              <h1>My Posts</h1>
+            </div>
+{% endblock %}
+{% block head %}
+    {{ simplemde.css }}
+    {{ simplemde.js }}
+    <script>
+    function ValidationEvent() {
+      var title = document.forms["addForm"]["title"].value;
+      var subtitle = document.forms["addForm"]["subtitle"].value;
+      var content = document.forms["addForm"]["content"].value;
+      if (title == "") {
+        alert("Title cannot be empty");
+        return false;
+      }
+      if (subtitle == "") {
+        alert("Subtitle cannot be empty");
+        return false;
+      }
+      if (content == "") {
+        alert("Content cannot be empty")
+        return false
+      }
+    }
+    </script>
+    <script>
+    {% if post %}
+    window.onload = function(){
+      document.getElementById("title").value = "{{post.title}}";
+      document.getElementById("subtitle").value = "{{post.subtitle}}";
+    }
+    {% endif %}
+    </script>
+{% endblock %}
+{% block content %}
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <form name="addForm" id="addForm" method="POST" onsubmit="return ValidationEvent()" action="" novalidate>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                {{ form.title.label }} {{ form.title(class="form-control", placeholder="Title") }}
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                {{ form.subtitle.label }} {{ form.subtitle(class="form-control", placeholder="Subtitle") }}
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for="content">content</label> 
+                <textarea class="form-control" id="content" name="content" placeholder="Blog Content" required>
+                {% if post %}    
+                {{post.content}}
+                {% endif %}
+                </textarea>
+                <script>
+                (function () {
+                  var simplemde = new SimpleMDE({ element: document.getElementById("content") });
+                })();
+                </script>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button class="btn btn-primary" id="sendMessageButton"> 
+                  Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+{% endblock %}

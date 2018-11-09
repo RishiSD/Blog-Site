@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Clean Blog - Start Bootstrap Theme{% endblock %}
+{% block image %}{{ url_for( 'static', filename='about-bg.jpg')}}{% endblock %}
+{% block header %}
+            <div class="page-heading">
+              <h1>About Me</h1>
+              <span class="subheading">This is what I do.</span>
+            </div>
+{% endblock %}
+{% block content %}
+	<div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Hey everyone !!! My name is Rishi Deorukhkar and I am from Mumbai.
+             I have been working as a software developer since 2015.
+             Programming mainly in C, C++, Python and Unix shell.</p>
+          <p>In the recent years I have grown really fond of programming in Python.
+             On this blog site I will be posting some of my Python and other hobby projects
+             which I have been working on.</p>
+        </div>
+      </div>
+    </div>
+{% endblock %}
