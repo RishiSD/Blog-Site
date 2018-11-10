@@ -18,10 +18,10 @@ def signup():
         abort(401)
     form = UserForm(request.form)
     if request.method == 'GET':
-        return render_template('login.html', form=form)
+        return render_template('login.html', form=form, type='SignUp')
     else:
         if User.get_user_by_username(username=request.form['username']):
-            return render_template('login.html', form=form,
+            return render_template('login.html', form=form, type='SignUp',
                                    error="A user with username already exists")
         else:
             user = User(username=request.form['username'],
@@ -35,7 +35,7 @@ def signup():
 def login():
     form = UserForm(request.form)
     if request.method == 'GET':
-        return render_template('login.html', form=form)
+        return render_template('login.html', form=form, type='Login')
     else:
         user = User.get_user_by_username(username=request.form['username'])
         if user and check_password_hash(user.password, request.form['password']):
@@ -45,7 +45,7 @@ def login():
             return redirect(url_for('navigation.index_logged',
                                     username=user.username))
         else:
-            return render_template('login.html', form=form,
+            return render_template('login.html', form=form, type='Login',
                                    error="Invalid Credentials")
 
 
