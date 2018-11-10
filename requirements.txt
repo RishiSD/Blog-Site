@@ -4,4 +4,4 @@ Flask-SimpleMDE
 Flask-Markdown
 Flask-Login
 flask-mongoengine
-
+uwsgi
