@@ -12,3 +12,4 @@ class Config(object):
     MONGODB_PORT = int(os.environ.get('MONGODB_PORT', 27017))
     MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME', 'test')
     MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD', 'test')
+    MONGODB_CONNECT = False
