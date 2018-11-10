@@ -9,6 +9,6 @@ class Config(object):
     SIGNUP_ENABLED = True
     MONGODB_DB = os.environ.get('MONGODB_DB', 'test')
     MONGODB_HOST = os.environ.get('MONGODB_HOST', '127.0.0.1')
-    MONGODB_PORT = os.environ.get('MONGODB_PORT', 27017)
+    MONGODB_PORT = int(os.environ.get('MONGODB_PORT', 27017))
     MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME', 'test')
     MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD', 'test')
