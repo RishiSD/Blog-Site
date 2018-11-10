@@ -2,4 +2,6 @@ Flask
 Flask-SQLAlchemy
 Flask-SimpleMDE
 Flask-Markdown
-WTForms
+Flask-Login
+flask-mongoengine
+
